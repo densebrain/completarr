@@ -1,8 +1,13 @@
+.idea
+lib
+*.iml
+
 
 # Created by https://www.gitignore.io/api/linux,macos,windows,sublimetext,visualstudiocode,node
 
 ### Linux ###
 *~
+
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*

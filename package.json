@@ -1,7 +1,7 @@
 {
-  "name": "completarr",
-  "version": "0.2.2",
-  "description": "Zero config autocompletions for yargs apps (bash, zsh, fish)",
+  "name": "@densebrain/completarr",
+  "version": "1.0.0",
+  "description": "Forked from `completarr` and converted to `typescript`.  Zero config autocompletions for yargs apps (bash, zsh, fish)",
   "keywords": [
     "autocomplete",
     "bash",
@@ -20,17 +20,28 @@
     "url": "git+https://github.com/Loilo/completarr.git"
   },
   "license": "MIT",
-  "author": "Florian Reuschel <florian@loilo.de>",
-  "files": [
-    "src"
+  "author": "Jonathan Glanz <jonathan.glanz@gmail.com>",
+  "contributors": [
+    "Florian Reuschel <florian@loilo.de>"
   ],
-  "main": "src/complete.js",
+  "files": [
+    "src",
+    "lib",
+    "bin"
+  ],
+  "main": "lib/complete.js",
   "bin": {
-    "install-yargs-completion": "./src/install",
-    "uninstall-yargs-completion": "./src/uninstall"
+    "install-yargs-completion": "./bin/install",
+    "uninstall-yargs-completion": "./bin/uninstall"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "compile": "tsc -b tsconfig.json",
+    "compile:watch": "tsc -b -w tsconfig.json",
+    "prepublishOnly": "yarn run compile"
   },
   "dependencies": {
     "omelette": "^0.4.11",
@@ -38,6 +49,11 @@
     "yargs-parser": "^13.1.0"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "@types/node": "^12.7.5",
+    "@types/omelette": "^0.4.0",
+    "@types/string-argv": "^0.1.0",
+    "@types/yargs-parser": "^13.1.0",
+    "standard": "^12.0.1",
+    "typescript": "^3.6.3"
   }
 }

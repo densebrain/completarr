@@ -1,16 +1,17 @@
-#!/usr/bin/env node
+
+import { join } from "path"
+import commands from "./binaries"
+import { existsSync, readFileSync, writeFileSync } from "fs"
+
 if (process.platform !== 'win32') {
-  const { join } = require('path')
-  const { HOME, SHELL } = process.env
+  
+  const
+    { HOME, SHELL } = process.env,
+    shellFile = SHELL.match(/bash/) ? join(HOME, '.bash_profile')
+      : SHELL.match(/zsh/) ? join(HOME, '.zshrc')
+      : SHELL.match(/fish/) ? join(HOME, '.config/fish/config.fish')
+      : null
 
-  const commands = require('./binaries')
-
-  const shellFile = SHELL.match(/bash/) ? join(HOME, '.bash_profile')
-    : SHELL.match(/zsh/) ? join(HOME, '.zshrc')
-    : SHELL.match(/fish/) ? join(HOME, '.config/fish/config.fish')
-    : null
-
-  const { readFileSync, writeFileSync, existsSync } = require('fs')
 
   if (shellFile && existsSync(shellFile)) {
     let shellFileContents = readFileSync(shellFile, 'utf8')
