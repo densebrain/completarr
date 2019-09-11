@@ -1,3 +1,7 @@
+# Typescript Completarr
+
+Forked from `completarr` and converted to `typescript`.
+
 # Completarr
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -9,7 +13,7 @@ You may want to use this over yargs' [built-in solution](http://yargs.js.org/doc
 
 ## Installation
 ```
-npm install --save completarr
+yarn add @densebrain/completarr
 ```
 
 ## Usage
@@ -17,8 +21,10 @@ To use Completarr, perform the following rather simple steps:
 
 1. Integrate it into your CLI app:
 
-   ```javascript
-   require('completarr')()
+   ```typescript
+   import completer from "@densebrain/completarr"
+   
+   completer()
 
    // Your yargs-related code
    ```
@@ -46,13 +52,13 @@ Completarr should work without any config 99% of the time, but there might be so
 #### Command Name (Shell Script)
 By default, Completarr adds completion for all commands it finds in your `package.json`'s `bin` field. If you got more commands there than you want completion for, you need to pass them to the install/uninstall hook explicitely:
 
-```javascript
+```json5
 // Your CLI app's package.json
 {
   // We got three binaries:
   "bin": {
     "a": "./src/a",
-    "b": "./src/b"
+    "b": "./src/b",
     "c": "./src/c"
   },
   "scripts": {
@@ -66,33 +72,42 @@ By default, Completarr adds completion for all commands it finds in your `packag
 #### Command Name (Node)
 Completarr needs to know the name of your yargs root command to provide completions. By default it derives that from the binary where Completarr is included:
 
-```javascript
-// file: src/hello
-require('completarr')()
+```typescript
+// file: src/hello.ts
+import completer from "@densebrain/completarr"
+   
+completer()
+
 
 // Completarr assumes the command name is "hello"
 ```
 
 However if for some reason your command name does not equal your file's name, you may pass Completarr the command name manually:
 
-```javascript
-// file: src/foo.js
-require('completarr')({
-  name: 'hello'
+```typescript
+// file: src/foo.ts
+import completer from "@densebrain/completarr"
+   
+completer({
+name: 'hello'
 })
+
+
 ```
 
 #### Help Option
 By default, yargs' option for showing the help output is `--help`. However, should you decide to publish the help under a different option ([which yargs allows you to do](http://yargs.js.org/docs/#api-helpoption-boolean)) you'll have to tell Completarr about it:
 
-```javascript
+```typescript
 // We use --info instead of --help
-require('completarr')({
+import completer from "@densebrain/completarr"
+
+completer({
   helpOption: 'info'
 })
 
 // yargs-related code
-require('yargs')
-  .help('info')
-  // ...
+import Yargs from "yargs"
+Yargs.help('info')
+// ...
 ```
