@@ -1,6 +1,6 @@
 {
   "name": "@densebrain/completarr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Forked from `completarr` and converted to `typescript`.  Zero config autocompletions for yargs apps (bash, zsh, fish)",
   "keywords": [
     "autocomplete",
@@ -11,13 +11,13 @@
     "yargs",
     "zsh"
   ],
-  "homepage": "https://github.com/Loilo/completarr#readme",
+  "homepage": "https://github.com/densebrain/completarr#readme",
   "bugs": {
-    "url": "https://github.com/Loilo/completarr/issues"
+    "url": "https://github.com/densebrain/completarr/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Loilo/completarr.git"
+    "url": "git+https://github.com/densebrain/completarr.git"
   },
   "license": "MIT",
   "author": "Jonathan Glanz <jonathan.glanz@gmail.com>",
