@@ -19,7 +19,7 @@ export default function completeYargs({ name, helpOption = "help" }:Opts = {}) {
   }
   
   // Print the default completion script
-  if (process.argv.includes("--completion")) {
+  if (process.argv.some(it => it.startsWith("--completion"))) {
     omelette(name).init()
     process.exit()
   }
