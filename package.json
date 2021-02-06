@@ -1,6 +1,6 @@
 {
   "name": "@densebrain/completarr",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Forked from `completarr` and converted to `typescript`.  Zero config autocompletions for yargs apps (bash, zsh, fish)",
   "keywords": [
     "autocomplete",
@@ -44,7 +44,7 @@
     "prepublishOnly": "yarn run compile"
   },
   "dependencies": {
-    "omelette": "^0.4.11",
+    "omelette": "^0.4.15-1",
     "string-argv": "^0.3.0",
     "yargs-parser": "^13.1.0"
   },
